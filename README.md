@@ -1,61 +1,52 @@
-📖 NextRead
-Discover books you’ll love – personalized recommendations based on your favorites!
+# NextRead: Book Recommendation System
 
-🌟 About the Project
+Discover books you’ll love – personalized recommendations based on your favorites.
 
-This project is a Book Recommendation System that suggests books similar to the ones you already like. It uses content-based filtering on genres, authors, and descriptions to recommend titles.
+## About the Project
+This is a Book Recommendation System that suggests books similar to the ones you already like.  
+It uses content-based filtering on genres, authors, and descriptions.  
+The goal was to practice working with real datasets, feature engineering, and recommendation algorithms.  
 
-I built it to get hands-on experience with real-world datasets, feature engineering, and recommendation algorithms. Plus, it has a simple Streamlit app so you can try it out interactively.
+## How It Works
+### Data & Cleaning
+- Loaded `goodreads_books.csv` from Kaggle  
+- Removed duplicates and handled missing values  
+- Parsed genres/authors and converted ratings  
+- Saved clean dataset as `books_cleaned.csv`
 
-🛠️ How It Works
+### Feature Engineering
+- Encoded genres and authors with one-hot encoding  
+- Transformed book descriptions with TF-IDF (5000 features)  
+- Combined all features into a single sparse feature matrix  
 
--Data & Cleaning
-Loaded goodreads_books.csv from Kaggle.
-Removed duplicates, handled missing values, parsed genres/authors.
-Converted ratings to numbers and saved the clean dataset as books_cleaned.csv.
+### Model
+- Used cosine similarity to measure closeness between books  
+- Precomputed and saved the similarity matrix for fast lookups  
+- Implemented `recommend()` to return similar books with title, author, rating, description snippet, and Goodreads link  
 
--Feature Engineering
-Encoded genres & authors with one-hot encoding.
-Transformed book descriptions with TF-IDF (5000 features).
-Combined everything into a single sparse feature matrix.
+### UI
+- Built with Streamlit  
+- Dropdown autocomplete for book titles  
+- Sidebar filters for number of recommendations and rating ranking  
+- Two-column layout with book cards showing:  
+  - Title (clickable to Goodreads)  
+  - Author and rating (stars)  
+  - Short description with expandable text  
 
--Model
-Used cosine similarity to measure closeness between books.
-Precomputed and saved the similarity matrix for fast lookups.
-Wrote a recommend() function that returns similar books (title, author, rating, snippet, and Goodreads link).
+## Demo
+- Kaggle Notebook: [Book Recommendation System](https://www.kaggle.com/code/gitanjalisoni/book-rec)  
+- Deployed link: ()  
 
--UI (Streamlit)
-Dropdown autocomplete for book titles.
-Sidebar filters for number of recommendations and rating ranking.
--Clean two-column layout with book cards:
-Title (clickable to Goodreads)
-Author, rating (⭐ stars)
-Short description (expandable for more)
+## Tech Stack
+- Python (pandas, numpy, scikit-learn)  
+- Streamlit (interactive UI)  
+- Pickle (saving models/features)  
 
-🚀 Demo
--Live App Link
- ()
+## Features
+- Search any book and get recommendations  
+- Adjustable number of recommendations  
+- Option to rank results by rating  
+- Clean and simple UI with clickable book cards  
 
-📂 Project Structure
-Book-Recommendation-System/
-│
-├── data/                  # Raw and cleaned datasets
-├── notebooks/             # Jupyter notebooks for EDA
-├── scripts/               # Data cleaning, feature engineering, model
-├── outputs/               # Saved models, similarity matrix
-├── main.py                # Streamlit app
-├── requirements.txt       # Dependencies
-└── README.md              # Project documentation
-
-📊 Tech Stack
-Python (pandas, numpy, scikit-learn)
-Streamlit (for interactive UI)
-Pickle (for saving models/features)
-
-✨ Features
-Search any book title and get recommendations.
-Choose number of recommendations (5, 10, etc.).
-Option to rank results by rating.
-Beautiful, clean UI with book cards and clickable links.
-
-Dataset: Goodreads on Kaggle
+## Dataset
+Goodreads dataset from Kaggle  
