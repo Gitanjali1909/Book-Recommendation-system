@@ -1,5 +1,5 @@
 📖 NextRead
-Discover books you’ll love – personalized recommendations based on your favorites!
+Discover books you’ll love; personalized recommendations based on your favorites!
 
 🌟 About the Project
 
@@ -34,18 +34,7 @@ Short description (expandable for more)
 
 🚀 Demo
 -Live App Link
- ()
-
-📂 Project Structure
-Book-Recommendation-System/
-│
-├── data/                  # Raw and cleaned datasets
-├── notebooks/             # Jupyter notebooks for EDA
-├── scripts/               # Data cleaning, feature engineering, model
-├── outputs/               # Saved models, similarity matrix
-├── main.py                # Streamlit app
-├── requirements.txt       # Dependencies
-└── README.md              # Project documentation
+ (https://book-recommendation-system-1.streamlit.app/)
 
 📊 Tech Stack
 Python (pandas, numpy, scikit-learn)
