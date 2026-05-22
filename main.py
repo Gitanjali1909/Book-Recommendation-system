@@ -32,7 +32,7 @@ book_title = st.selectbox("Select a book:", df["Book"].sort_values().unique())
 
 
 def stars(rating):
-    return "★" * int(float(rating))
+    return "*" * int(float(rating))
 
 
 if st.button("Get Recommendations"):
