@@ -1,4 +1,5 @@
 import pickle
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 def load_similarity_matrix(path="outputs/similarity_matrix.pkl"):
@@ -6,10 +7,23 @@ def load_similarity_matrix(path="outputs/similarity_matrix.pkl"):
         return pickle.load(f)
 
 
+def build_similarity_matrix(df):
+    """
+    Build similarity matrix from precomputed features.
+    """
+    import pickle
+
+    # load features
+    with open("outputs/features.pkl", "rb") as f:
+        features = pickle.load(f)
+
+    # compute similarity
+    similarity_matrix = cosine_similarity(features)
+
+    return similarity_matrix
+
+
 def recommend(book_title, df, similarity_matrix, top_n=5, rank_by_rating=False):
-    """
-    Recommend similar books using a precomputed similarity matrix.
-    """
     matches = df[df["Book"].str.lower() == book_title.lower()]
 
     if matches.empty:
