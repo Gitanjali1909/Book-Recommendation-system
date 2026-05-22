@@ -1,9 +1,7 @@
-import os
-import pickle
 import pandas as pd
 import streamlit as st
 
-from scripts.model import load_similarity_matrix, recommend, build_similarity_matrix
+from scripts.model import load_similarity_matrix, recommend
 
 
 # -------------------- DATA LOADING --------------------
@@ -16,32 +14,22 @@ def load_dataset(path="data/books_cleaned.csv"):
     return df
 
 
+# -------------------- SIMILARITY --------------------
+
 @st.cache_resource
-def load_similarity(path="outputs/similarity_matrix.pkl"):
-    # If file exists → load
-    if os.path.exists(path):
-        return load_similarity_matrix(path)
-
-    # If not → create it (cloud-safe fix)
-    else:
-        df = load_dataset()
-        sim = build_similarity_matrix(df)
-
-        os.makedirs("outputs", exist_ok=True)
-        with open(path, "wb") as f:
-            pickle.dump(sim, f)
-
-        return sim
+def load_similarity(df):
+    return load_similarity_matrix(df)
 
 
 # -------------------- LOAD --------------------
 
 df = load_dataset()
-similarity_matrix = load_similarity()
+similarity_matrix = load_similarity(df)
+
 
 # -------------------- UI --------------------
 
-st.set_page_config(page_title="Book Recommendation System", layout="wide")
+st.set_page_config(page_title="NextRead", layout="wide")
 
 st.title("NextRead 📚")
 st.markdown("Discover books you'll love — personalized recommendations based on your favorites!")
