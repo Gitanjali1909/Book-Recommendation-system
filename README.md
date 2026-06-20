@@ -1,7 +1,6 @@
-📖 NextRead
 Discover books you’ll love; personalized recommendations based on your favorites!
 
-🌟 About the Project
+About the Project
 
 This project is a Book Recommendation System that suggests books similar to the ones you already like. It uses content-based filtering on genres, authors, and descriptions to recommend titles.
 
